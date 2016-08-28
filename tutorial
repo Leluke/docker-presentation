@@ -1,0 +1,17 @@
+docker-machine create -d virtualbox node-0
+docker-machine create -d virtualbox node-1
+docker-machine create -d virtualbox node-2
+
+Pega os ips. Pode ser docker-machine ls.
+docker-machine env node-0
+
+No /etc/hosts configurar IPs
+
+docker-machine ssh node-0
+docker swarm init --listen-addr=node-0-ip --advertise-addr=node-0-ip
+
+Usa o comando retornado dentro de cada worker para dar join no cluster.
+
+docker service create --name demo -p 8000:5000 mikesir87/cats
+
+docker service update --replicas=3 demo
