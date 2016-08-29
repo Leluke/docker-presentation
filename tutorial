@@ -14,4 +14,6 @@ Usa o comando retornado dentro de cada worker para dar join no cluster.
 
 docker service create --name demo -p 8000:5000 mikesir87/cats
 
+docker service ps demo
+
 docker service update --replicas=3 demo
